@@ -18,7 +18,7 @@ console.log("코드 끝"); //A 작업 끝이 먼저 찍힘
 // 비동기적 방식
 function taskB() {
   setTimeout(()=>{
-    console.log("A TASK END");
+    console.log("B TASK END");
   }, 20000)
 };
  
@@ -34,7 +34,7 @@ function taskC(a, b, cb) {
 };
  
 taskC(3, 4, (res) => {
-  console.log("A TASK RESULT : ", res)
+  console.log("C TASK RESULT : ", res)
 });
 console.log("코드 끝"); //"코드 끝"이 먼저 찍힘
 
@@ -69,10 +69,72 @@ function isPositive(number, resolve, reject) {
       reject("주어진 값이 숫자형 값이 아닙니다.");
     }
   }, 2000)
+};
+
+// isPositive(10, (res) => {
+//   console.log("성공적으로 수행됨 :", res)
+// }, (err) => {
+//   console.log("실패 하였음 : ", err)
+// });
+
+function isPositiveP(number) {
+  const executor = (resolve, reject) => { //실행자
+    setTimeout(()=> {
+      if(typeof number === 'number') {
+        // resolve 되었을 때
+        resolve(number >=0? "양수" : "음수");
+      } else {
+        // reject 되었을 때
+        reject("주어진 값이 숫자형 값이 아닙니다.");
+      }
+    }, 2000);
+  };
+
+  const asyncTask = new Promise(executor);
+  return asyncTask;
+};
+
+const res = isPositiveP(101);  
+const rej = isPositiveP([]); 
+
+res.then((res)=>{console.log("작업 성공 : ", res)}).catch((err)=>{console.log("작업 실패 : ", err)}); //작업 성공 :  양수
+rej.then((res)=>{console.log("작업 성공 : ", res)}).catch((err)=>{console.log("작업 실패 : ", err)}); //작업 실패 :  주어진 값이 숫자형 값이 아닙니다.  
+
+
+// 여러 함수의 비동기 처리
+function taskA(a, b) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const res = a + b;
+      resolve(res);
+    }, 3000);
+  });
 }
 
-isPositive(10, (res) => {
-  console.log("성공적으로 수행됨 :", res)
-}, (err) => {
-  console.log("실패 하였음 : ", err)
-})
+function taskB(a) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const res = a * 2;
+      resolve(res);
+    }, 1000);
+  });
+}
+
+function taskC(a) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const res = a * -1;
+      resolve(res);
+    }, 2000);
+  });
+}
+
+taskA(5, 1).then((a_res) => {
+  console.log("A RESULT : ", a_res);
+  return taskB(a_res);
+}).then((b_res) => {
+  console.log("B RESULT : ", b_res);
+  return taskC(b_res);
+}).then((c_res) => {
+  console.log("C RESULT : ", c_res);
+});
