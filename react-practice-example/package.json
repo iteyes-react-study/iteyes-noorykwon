@@ -1,0 +1,12 @@
+{
+  "name": "package-example1",
+  "version": "1.0.0",
+  "description": ": 강의 수강내용 노트정리 및 실습 코드 입니다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "NooryKwon",
+  "license": "ISC"
+}
