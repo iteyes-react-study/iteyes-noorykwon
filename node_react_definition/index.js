@@ -18,6 +18,9 @@ npm (Node Package Manager)
 다른사람이 만들어 놓은 모듈들(패키지)을 내려받아서 사용할 수 있음
 개발한 프로젝트 관리
 
+https://www.npmjs.com/
+오픈소스 노드JS 패키지들이 업로드되어있음
+
 */
 
 

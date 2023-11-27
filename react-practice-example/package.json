@@ -7,6 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "author": "NooryKwon",
-  "license": "ISC"
+  "author": "Taja",
+  "license": "ISC",
+  "dependencies": {
+    "randomcolor": "^0.6.2"
+  }
 }
