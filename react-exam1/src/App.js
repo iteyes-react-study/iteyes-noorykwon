@@ -2,6 +2,7 @@ import React from "react"
 // import './App.css'; //css를 외부에 위치하는 방식
 import MyHeader from './MyHeader';
 import MyFooter from './MyFooter';
+import Counter from "./Counter";
 
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
 
   const style = {  //css를 내부에 위치하는 방식
     App : {
-      backgroundColor: 'black',
+      backgroundColor: 'while'
     },
     h2 : {
       color : "red"
@@ -21,16 +22,21 @@ function App() {
 
   const number = Math.floor(Math.random()*10);
 
+  const counterProps = { //prop은 객체의 spread 연산자로도 전달 가능
+    a: 1,
+    b: 2,
+    c: 3,
+    d: 4,
+    e: 5,
+    initialValue: 5,
+  }
+
+
   return (
     <div style={style.App}>
       <MyHeader />
-      <header className="App-header">
-        <h2 style={style.h2}>안녕 리액트</h2>
-        <b id="bold_text" style={style.bold_text}>
-          React!! <br />
-        {number}는 : {number % 2 === 0? "짝수" : "홀수"}
-        </b>
-      </header>
+      <Counter a={1} initialValue={5} />
+      <Counter {...counterProps} />
     </div>
   );
 }
