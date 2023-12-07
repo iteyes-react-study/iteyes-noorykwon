@@ -3,6 +3,7 @@ import React from "react"
 import MyHeader from './MyHeader';
 import MyFooter from './MyFooter';
 import Counter from "./Counter";
+import Container from "./Container";
 
 
 function App() {
@@ -22,7 +23,11 @@ function App() {
 
   const number = Math.floor(Math.random()*10);
 
-  const counterProps = { //prop은 객체의 spread 연산자로도 전달 가능
+
+  /*
+  리액트에서 컴포넌트에게 데이터를 전달하는 가장 기본적이고도 효율적이고 강력한 방법인 props
+   */
+  const counterProps = { //prop은 객체의 spread 연산자(아래참조)로도 전달 가능
     a: 1,
     b: 2,
     c: 3,
@@ -33,11 +38,13 @@ function App() {
 
 
   return (
-    <div style={style.App}>
-      <MyHeader />
-      <Counter a={1} initialValue={5} />
-      <Counter {...counterProps} />
-    </div>
+    <Container>
+      <div style={style.App}>
+        <MyHeader />
+        <Counter a={1} initialValue={5} />
+        <Counter {...counterProps} /> 
+      </div>
+    </Container>
   );
 }
 

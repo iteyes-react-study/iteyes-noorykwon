@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import OddEvenResult from "./OddEvenResult";
+
 
 const Counter = (props) => {
     // const Counter = ({ initialValue }) => { // 비구조화 할당을 통해 특정값만 꺼내쓸수도 있다
@@ -22,8 +24,13 @@ const Counter = (props) => {
             <h2>{count}</h2>
             <button onClick={onIncrease}>+</button>
             <button onClick={onDecrease}>-</button>
+            <OddEvenResult count={count} />
         </div>
     )
+}
+
+Counter.defaultProps={ // props의 기본값을 설정하여 에러방지
+    initialValue: 0
 }
 
 export default Counter;
