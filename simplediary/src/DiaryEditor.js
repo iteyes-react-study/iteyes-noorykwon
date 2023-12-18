@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 
-const DiaryEditor = () => {
-  // const [auther, setAuthor] = useState("");
+const DiaryEditor = ({ onCreate }) => {
+  // const [author, setAuthor] = useState("");
   // const [content, setContent] = useState("");
 
   // 객체로 state 를 묶기
@@ -34,7 +34,13 @@ const DiaryEditor = () => {
       return;
     }
 
+    onCreate(state.author, state.content, state.emotion);
     alert("저장 성공");
+    setState({
+      author: "",
+      content: "",
+      emotion: 1,
+    });
   };
 
   return (
@@ -44,14 +50,14 @@ const DiaryEditor = () => {
         <input
           ref={authorInput}
           name="author"
-          value={state.auther}
+          value={state.author}
           onChange={
             // (e)=>{
             // setState({
             // // content: state.content // 추후에 객체의 항목이 많아진다면?
             // // 스프레드 연산자로 한번에 표기하기. 꼭 먼저 스프레드연산자 이후에 변경하는 프로퍼티는 마지막에 기재하기
             // ...state,
-            // auther: e.target.value
+            // author: e.target.value
             // })}
 
             handleChangeState
