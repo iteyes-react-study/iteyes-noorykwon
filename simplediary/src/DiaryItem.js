@@ -51,6 +51,7 @@ const DiaryItem = ({
         {isEdit ? (
           <>
             <textarea
+              ref={localContentInput}
               value={localContent}
               onChange={(e) => setLocalContent(e.target.value)}
             ></textarea>
