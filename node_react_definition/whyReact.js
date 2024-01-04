@@ -20,6 +20,13 @@ React는 왜 필요한걸까?
 React는 Component 기반, Node 기반의 Javascript UI 라이브러리
         Node.js 기반의 웹서버 위에서 동작하고 있음
 
+
+- MPA(Multi Page Application)
+- SPA(Single page Application)
+- CSR(Client Side Rendering)
+
+=> React 는 SPA, CSR 방식을 취하고 있음.
+
 */
 
 /*

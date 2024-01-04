@@ -1,8 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
+import { DiaryDispatchContext } from "./App";
 
-const DiaryEditor = ({ onCreate }) => {
+const DiaryEditor = () => {
   // const [author, setAuthor] = useState("");
   // const [content, setContent] = useState("");
+
+  const { onCreate } = useContext(DiaryDispatchContext);
 
   // 객체로 state 를 묶기
   const [state, setState] = useState({
